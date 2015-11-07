@@ -193,8 +193,6 @@ def main(**kwargs):
             with open(kwargs["file"], "w") as fh:
                 json.dump(item, fh)
 
-
-
         print(json.dumps(item, sort_keys=True, indent=4))
         inp = " "
         while inp not in "qQ":

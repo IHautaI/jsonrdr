@@ -10,7 +10,7 @@ args = parser.parse_args()
 
 
 if __name__ == "__main__":
-  if args.file:
-    jsonrdr.main(file=args.file)
-  else:
-    jsonrdr.main()
+    if args.file:
+        jsonrdr.main(file=args.file)
+    else:
+        jsonrdr.main()
