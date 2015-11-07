@@ -185,11 +185,13 @@ def main(**kwargs):
         with open(kwargs["file"], "r") as fh:
             item = json.load(fh)
 
-        print(json.dump(item, sort_keys=True, indent=4))
-
+        print(json.dumps(item, sort_keys=True, indent=4))
+        inp = " "
         while inp not in "qQ":
             mod_menu()
-            item, inp = modify(item)
+            inp = input("->")
+            item = modify(item, inp)
+            os.system("clear")
 
         with open(kwargs["file"], "w") as fh:
             fh.write(json.dump(item))
@@ -209,4 +211,4 @@ def main(**kwargs):
         if name not in "qQ":
 
             with open("./" + name + ".json", "w") as fh:
-                fh.write(json.dump(item))
+                json.dump(item, fh)
