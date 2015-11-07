@@ -1,0 +1,17 @@
+#!/Library/Frameworks/Python.framework/Versions/3.4/bin/python3
+import jsonrdr
+import argparse
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-f", "--file", help="Input path to a json file to alter",
+                    action="store_true")
+
+args = parser.parse_args()
+
+
+if __name__ == "__main__":
+  if args.file:
+    jsonrdr.main(file=args.file)
+  else:
+    jsonrdr.main()
