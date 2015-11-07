@@ -182,8 +182,18 @@ def main(**kwargs):
     item = {}
 
     if kwargs:
-        with open(kwargs["file"], "r") as fh:
-            item = json.load(fh)
+        try:
+            with open(kwargs["file"], "r") as fh:
+                item = json.load(fh)
+
+        except ValueError:
+
+            item = {}
+
+            with open(kwargs["file"], "w") as fh:
+                json.dump(item, fh)
+
+
 
         print(json.dumps(item, sort_keys=True, indent=4))
         inp = " "
@@ -194,7 +204,7 @@ def main(**kwargs):
             os.system("clear")
 
         with open(kwargs["file"], "w") as fh:
-            fh.write(json.dump(item))
+            json.dump(item, fh)
 
     else:
         inp = " "
